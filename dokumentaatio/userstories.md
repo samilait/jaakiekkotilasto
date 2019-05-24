@@ -1,0 +1,4 @@
+# Käyttötapaukset
+
+- Käyttäjä voi lisätä pelaajia tietokantaan. Pelaajan tiedot ovat: Nimi (Etunimi Sukunimi), Pelaajanumero ja Pelipaikka (KH, VL, OL, VP, OP, MV).
+- Käyttäjä voi listata kannassa olevat pelaajat.
