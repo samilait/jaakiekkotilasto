@@ -7,9 +7,20 @@ from application.players.models import Player
 def players_index():
     return render_template("players/list.html", players = Player.query.all())
 
+
 @app.route("/players/new/")
 def players_form():
     return render_template("players/new.html")
+
+
+@app.route("/players/<player_id>/", methods=["POST"])
+def players_change_position(player_id):
+
+    p = Player.query.get(player_id)
+    p.position = request.form.get("position")
+    db.session().commit()
+  
+    return redirect(url_for("players_index"))
 
 
 @app.route("/players/", methods=["POST"])
