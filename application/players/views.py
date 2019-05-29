@@ -26,7 +26,9 @@ def players_change_position(player_id):
 
 @app.route("/players/", methods=["POST"])
 def players_create():
-    p = Player(request.form.get("name"), request.form.get("number"), request.form.get("position"))
+    form = PlayerForm(request.form)
+    # p = Player(request.form.get("name"), request.form.get("number"), request.form.get("position"))
+    p = Player(form.name.data, form.number.data, form.position.data)
 
     db.session().add(p)
     db.session().commit()
