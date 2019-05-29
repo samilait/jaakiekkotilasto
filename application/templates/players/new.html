@@ -2,12 +2,45 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('players_create') }}">
-  <label for="name">Name (First Surname)</label>
+  <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+    </tr>
+    <tr>
+        <td>
+          {{ form.number.label }}
+        </td>
+        <td>
+          {{ form.number }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+          {{ form.position.label }}
+        </td>
+        <td>
+          {{ form.position }}
+        </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Add new player"/>
+      </td>
+    </tr>
+  </table>
+
+  <!-- <label for="name">Name (First Surname)</label>
   <input type="text" name="name"/>
   <label for="number">Number</label>
   <input type="text" name="number"/>
   <label for="position">Position (KH,VL,OL,VP,OP,MV)</label>
   <input type="text" name="position"/>
-  <input type="submit" value="Add new player"/>
+  <input type="submit" value="Add new player"/> -->
 </form>
 {% endblock %}

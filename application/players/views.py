@@ -1,6 +1,7 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.players.models import Player
+from application.players.forms import PlayerForm
 
 
 @app.route("/players", methods=["GET"])
@@ -10,7 +11,7 @@ def players_index():
 
 @app.route("/players/new/")
 def players_form():
-    return render_template("players/new.html")
+    return render_template("players/new.html", form = PlayerForm())
 
 
 @app.route("/players/<player_id>/", methods=["POST"])
