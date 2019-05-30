@@ -25,6 +25,13 @@
         <td>
           {{ form.number }}
         </td>
+        <td>
+          <ul>
+            {% for error in form.number.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>  
     </tr>
     <tr>
         <td>
@@ -33,6 +40,13 @@
         <td>
           {{ form.position }}
         </td>
+        <td>
+          <ul>
+            {% for error in form.position.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>  
     </tr>
 
     <tr>
