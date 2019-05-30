@@ -6,6 +6,11 @@ Tietokantasovellus j‰‰kiekko-ottelun ottelutapahtumien kirjaamista ja selaamista
 
 - [Icehockey-Stats](https://icehockeystats.herokuapp.com)
 
+Login:
+
+- Username: dallas
+- Password: stars
+
 ## Dokumentaatio
 
 
