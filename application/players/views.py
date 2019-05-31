@@ -1,5 +1,7 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
+from flask_login import login_required
+
 from application.players.models import Player
 from application.players.forms import PlayerForm
 
@@ -10,11 +12,13 @@ def players_index():
 
 
 @app.route("/players/new/")
+@login_required
 def players_form():
     return render_template("players/new.html", form = PlayerForm())
 
 
 @app.route("/players/<player_id>/", methods=["POST"])
+@login_required
 def players_change_position(player_id):
 
     p = Player.query.get(player_id)
@@ -25,6 +29,7 @@ def players_change_position(player_id):
 
 
 @app.route("/players/", methods=["POST"])
+@login_required
 def players_create():
     form = PlayerForm(request.form)
 
