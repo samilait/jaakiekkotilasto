@@ -13,7 +13,7 @@
       <td>{{ player.name }}</td>
       <td>{{ player.number }}</td>
       <td>{{ player.position }}</td>
-      <td>{{ player.team_id }}</td>
+      <td>{{ player.team_name }}</td>
       <td>
         <form method="POST" action="{{ url_for('players_change_position', player_id=player.id) }}">
             <input type="text" name="position"/>
