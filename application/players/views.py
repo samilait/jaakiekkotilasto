@@ -4,11 +4,12 @@ from flask_login import login_required
 
 from application.players.models import Player
 from application.players.forms import PlayerForm
+from application.teams.models import Team
 
 
 @app.route("/players", methods=["GET"])
 def players_index():
-    return render_template("players/list.html", players = Player.query.all())
+    return render_template("players/list.html", players=Player.all_players())  # .query.all())
 
 
 @app.route("/players/new/")
@@ -35,8 +36,10 @@ def players_create():
 
     if not form.validate():
         return render_template("players/new.html", form = form)
-        
-    p = Player(form.name.data, form.number.data, form.position.data)    
+    
+    team_id = Team.find_team_id(str(form.team_name.data))
+
+    p = Player(form.name.data, form.number.data, form.position.data, team_id[0])    
 
     db.session().add(p)
     db.session().commit()

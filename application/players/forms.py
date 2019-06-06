@@ -24,6 +24,8 @@ class PlayerForm(FlaskForm):
         positions = ['VL', 'OL', 'KH', 'VP', 'OP', 'MV']
         if not (str(field.data) in positions):
             raise validators.ValidationError('Position must be: VL,OL,KH,VP,OP,MV')
+
+    team_name =StringField("Team name")
  
     class Meta:
         csrf = False
