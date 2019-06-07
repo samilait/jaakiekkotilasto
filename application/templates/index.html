@@ -4,4 +4,20 @@
   <p>
     
   </p>
+
+    {% if num_of_forwards is defined %}
+  <p>
+    Each team needs to have 3 forward players. List of forwards per team:
+  </p>
+
+  <ul>
+    {% for forward in num_of_forwards %}
+    <li>
+      {{forward.team_name}} {{forward.forward}}
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% endif %}
+
 {% endblock %}

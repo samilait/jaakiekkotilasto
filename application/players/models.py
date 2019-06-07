@@ -30,3 +30,18 @@ class Player(Base):
             response.append({"name": row[0], "number": row[1], "position": row[2], "team_name": row[3]})
 
         return response
+
+
+    @staticmethod
+    def num_of_forwards():
+        stmt = text("SELECT team.name, COUNT(player.position) AS Forward FROM player, team"
+                    " WHERE player.team_id = team.id AND player.position IN ('VL','OL','KH') GROUP BY team.name")
+        res = db.engine.execute(stmt)
+        
+        response = []
+
+        for row in res:
+            response.append({"team_name": row[0], "forward": row[1]})
+
+        return response
+
