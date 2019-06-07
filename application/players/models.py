@@ -1,12 +1,12 @@
 from application import db
 from sqlalchemy.sql import text
+from application.models import Base
 
 
-class Player(db.Model):
+class Player(Base):
 
     __tablename__ = "player"
     
-    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
     number = db.Column(db.Integer)
     position = db.Column(db.String(4), nullable=False)

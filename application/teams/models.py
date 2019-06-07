@@ -1,11 +1,12 @@
 from application import db
 from sqlalchemy.sql import text
+from application.models import Base
 
-class Team(db.Model):
+
+class Team(Base):
 
     __tablename__ = "team"
 
-    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
 
     player = db.relationship("Player", backref='team', lazy=True)
