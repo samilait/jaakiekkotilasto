@@ -20,8 +20,8 @@ class Player(Base):
 
     @staticmethod
     def all_players():
-        stmt = text("SELECT Player.Name, Player.Number, Player.Position, Team.Name FROM Player, Team"
-                    " WHERE Player.team_id = Team.id GROUP BY Player.Name, Player.Number, Player.Position, Team.id")
+        stmt = text("SELECT Team.Name, Player.Name, Player.Number, Player.Position FROM Player, Team"
+                    " WHERE Player.team_id = Team.id ORDER BY Player.Name, Player.Number, Player.Position, Team.id")
         res = db.engine.execute(stmt)
         
         response = []
