@@ -21,7 +21,7 @@ class Player(db.Model):
     @staticmethod
     def all_players():
         stmt = text("SELECT Player.Name, Player.Number, Player.Position, Team.Name FROM Player, Team"
-                    " WHERE Player.team_id = Team.id GROUP BY Team.id")
+                    " WHERE Player.team_id = Team.id GROUP BY Team.id, Player.Name")
         res = db.engine.execute(stmt)
         
         response = []
