@@ -37,7 +37,9 @@ def players_create():
     if not form.validate():
         return render_template("players/new.html", form = form)
     
-    team_id = Team.find_team_id(str(form.team_name.data))
+    sel_team_name = str(dict(form.team_name.choices).get(form.team_name.data))
+    
+    team_id = Team.find_team_id(sel_team_name)
 
     p = Player(form.name.data, form.number.data, form.position.data, team_id[0])    
 

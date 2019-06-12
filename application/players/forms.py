@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, validators
+from wtforms import StringField, validators, SelectField
 from application.teams.models import Team
 
 
@@ -27,10 +27,12 @@ class PlayerForm(FlaskForm):
         if not (str(field.data) in positions):
             raise validators.ValidationError('Position must be: VL,OL,KH,VP,OP,MV')
 
-    team_name =StringField("Team name")
+    team_choices = Team.all_team_data()
+    team_name = SelectField(u'Team name', choices=team_choices, coerce=int)
 
     def validate_team_name(form, field):
-        a = Team.find_team_id(str(field.data))
+        sel_team_name = str(dict(field.choices).get(field.data))
+        a = Team.find_team_id(sel_team_name)
         if not a:
             raise validators.ValidationError('Team name must match with team names already in database (list teams to see options)')
 

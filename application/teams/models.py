@@ -16,6 +16,8 @@ class Team(Base):
 
     @staticmethod
     def find_team_id(team_name=""):
+
+        print(team_name)
         stmt = text("SELECT Team.id FROM Team"
                     " WHERE Team.name = :team_name").params(team_name=team_name)
         res = db.engine.execute(stmt)
@@ -26,3 +28,19 @@ class Team(Base):
             response.append(row[0])
 
         return response
+    
+    
+    @staticmethod
+    def all_team_data():
+
+        stmt = text("SELECT Team.id, Team.Name FROM Team")
+                    
+        res = db.engine.execute(stmt)
+        
+        response = []
+
+        for row in res:
+            response.append((row[0], row[1]))
+
+        return response
+

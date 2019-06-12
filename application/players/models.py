@@ -21,13 +21,13 @@ class Player(Base):
     @staticmethod
     def all_players():
         stmt = text("SELECT Team.Name, Player.Name, Player.Number, Player.Position FROM Player, Team"
-                    " WHERE Player.team_id = Team.id ORDER BY Player.Name, Player.Number, Player.Position, Team.id")
+                    " WHERE Player.team_id = Team.id ORDER BY Team.id, Player.Name, Player.Number, Player.Position")
         res = db.engine.execute(stmt)
         
         response = []
 
         for row in res:
-            response.append({"name": row[0], "number": row[1], "position": row[2], "team_name": row[3]})
+            response.append({"team_name": row[0], "name": row[1], "number": row[2], "position": row[3]})
 
         return response
 
