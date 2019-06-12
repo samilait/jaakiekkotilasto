@@ -1,6 +1,6 @@
-from application import app, db
+from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required
+from flask_login import current_user
 
 from application.players.models import Player
 from application.players.forms import PlayerForm
@@ -24,13 +24,18 @@ def players_change_position(player_id):
 
     p = Player.query.get(player_id)
     p.position = request.form.get("position")
+
+    # if t.account_id != current_user.id:
+    #     # tee jotain, esim. 
+    #     return login_manager.unauthorized()
+    
     db.session().commit()
   
     return redirect(url_for("players_index"))
 
 
 @app.route("/players/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def players_create():
     form = PlayerForm(request.form)
 
