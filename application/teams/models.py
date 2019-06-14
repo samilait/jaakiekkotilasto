@@ -10,6 +10,9 @@ class Team(Base):
     name = db.Column(db.String(250), nullable=False)
 
     player = db.relationship("Player", backref='team', lazy=True)
+    
+    home_team = db.relationship('Match', backref = 'home_team', lazy = 'dynamic', foreign_keys = 'Match.home_team_id')
+    away_team = db.relationship('Match', backref = 'away_team', lazy = 'dynamic', foreign_keys = 'Match.away_team_id')
 
     def __init__(self, name):
         self.name = name

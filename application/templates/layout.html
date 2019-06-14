@@ -31,7 +31,16 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('players_form') }} ">Add player</a>
                   </li>
-                </ul>
+              </ul>
+
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('matches_index') }} ">List matches</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('matches_form') }} ">Add match</a>
+                </li>
+            </ul>
   
               <div class="form-inline mt-2 mt-md-0">
           {% if current_user.is_authenticated %}

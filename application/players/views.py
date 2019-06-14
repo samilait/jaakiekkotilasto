@@ -13,13 +13,13 @@ def players_index():
 
 
 @app.route("/players/new/")
-@login_required
+@login_required(role="ADMIN")
 def players_form():
     return render_template("players/new.html", form = PlayerForm())
 
 
 @app.route("/players/<player_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def players_change_position(player_id):
 
     p = Player.query.get(player_id)
