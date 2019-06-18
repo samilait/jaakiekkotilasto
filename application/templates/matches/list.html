@@ -12,6 +12,8 @@
       <td>{{ match.match_date }}</td>
       <td>{{ match.home_team_name }}</td>
       <td>{{ match.away_team_name }}</td>
+      <td><a href="{{ url_for('players_index') }} ">Add goal</a></td>
+      <td><a href="{{ url_for('players_index') }} ">Add penalty</a></td>
     </tr>
     {% endfor %}
   </table>

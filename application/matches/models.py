@@ -1,6 +1,7 @@
 from application import db
 from sqlalchemy.sql import text
 from application.models import Base
+import datetime
 
 
 class Match(Base):
@@ -27,6 +28,7 @@ class Match(Base):
         response = []
 
         for row in res:
-            response.append({"match_date": row[0], "home_team_name": row[1], "away_team_name": row[2]})
+            # str_date = datetime.datetime(row[0]).strftime("%Y-%m-%d")
+            response.append({"match_date": str(row[0])[:10], "home_team_name": row[1], "away_team_name": row[2]})
 
         return response

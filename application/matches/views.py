@@ -5,6 +5,7 @@ from flask_login import current_user
 from application.matches.models import Match
 from application.matches.forms import MatchForm
 from application.teams.models import Team
+import babel
 
 
 @app.route("/matches", methods=["GET"])
@@ -54,3 +55,12 @@ def matches_create():
     db.session().commit()
 
     return redirect(url_for("matches_index"))
+
+
+def format_datetime(value):
+    format = "y-MM-d"
+    p_date = babel.dates.parse_date(value)
+    return babel.dates.format_datetime(p_date, format, tzinfo=None)
+
+
+app.jinja_env.filters['datetime'] = format_datetime
