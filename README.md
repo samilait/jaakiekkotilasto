@@ -17,4 +17,8 @@ Login:
 
 - [Tietokantakaavio](https://github.com/samilait/jaakiekkotilasto/blob/master/dokumentaatio/tietokantakaavio.md)
 
+- [Käyttöohje](https://github.com/samilait/jaakiekkotilasto/blob/master/dokumentaatio/kayttoohje.md)
+
+- [Asennusohje](https://github.com/samilait/jaakiekkotilasto/blob/master/dokumentaatio/asennusohje.md)
+
 - [Käyttötapaukset (User stories)](https://github.com/samilait/jaakiekkotilasto/blob/master/dokumentaatio/userstories.md)

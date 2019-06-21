@@ -9,3 +9,4 @@
 - Käyttäjä voi vaihtaa pelaajan pelipaikkaa listauksen yhteydessä.
 - Käyttäjä voi lisätä ottelun: Ottelu päivä (kalenterivalikko), kotijoukkue ja vierasjoukkue (validointi kesken, ei voi olla sama joukkue)
 - Käyttäjä voi listata ottelut
+- Käyttäjä voi lisätä maalin joko koti- tai vierasjoukkueelle
