@@ -3,17 +3,28 @@
 {% block body %}
   <table>
     <tr>
+      <th>ID</th>
       <th>Date</th>
       <th>Home</th>
       <th>Away</th>
     </tr>
     {% for match in matches %}
     <tr>
+      <td>{{ match.id }}</td>
       <td>{{ match.match_date }}</td>
       <td>{{ match.home_team_name }}</td>
       <td>{{ match.away_team_name }}</td>
-      <td><a href="{{ url_for('players_index') }} ">Add goal</a></td>
-      <td><a href="{{ url_for('players_index') }} ">Add penalty</a></td>
+      <td>
+        <form method="POST" action="{{ url_for('goals_form', match_id=match.id, team_name=match.home_team_name) }}">
+            <input type="submit" value="Add goal: Home Team"/>
+        </form>
+      </td>
+      <td> 
+        <form method="POST" action="{{ url_for('goals_form', match_id=match.id, team_name=match.away_team_id) }}">
+            <input type="submit" value="Add goal: Away Team"/>
+        </form>
+      </td>
+
     </tr>
     {% endfor %}
   </table>

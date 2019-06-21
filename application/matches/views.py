@@ -60,7 +60,7 @@ def matches_create():
 def format_datetime(value):
     format = "y-MM-d"
     p_date = babel.dates.parse_date(value)
-    return babel.dates.format_datetime(p_date, format, tzinfo=None)
+    return babel.dates.format_datetime(p_date , format, tzinfo=None)
 
 
 app.jinja_env.filters['datetime'] = format_datetime

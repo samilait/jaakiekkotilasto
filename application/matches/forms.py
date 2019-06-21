@@ -5,6 +5,8 @@ from application.teams.models import Team
 
 
 class MatchForm(FlaskForm):
+
+    id = StringField("Match ID")
     match_date = DateField("Match date", format='%Y-%m-%d')
 
     team_choices = Team.all_team_data()

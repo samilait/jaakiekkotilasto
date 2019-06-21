@@ -1,0 +1,49 @@
+from application import app, db, login_required
+from flask import redirect, render_template, request, url_for
+from flask_login import current_user
+
+from application.goals.models import Goal
+from application.goals.forms import GoalForm
+from application.players.models import Player
+from application.teams.models import Team
+
+
+# @app.route("/players", methods=["GET"])
+# def players_index():
+#     return render_template("players/list.html", players=Player.all_players())  # .query.all())
+
+
+@app.route("/goals/new/<match_id>/<team_name>", methods=["POST"])
+# @login_required(role="ADMIN")
+def goals_form(match_id, team_name):
+    team_id = Team.find_team_id(team_name)
+    return render_template("goals/new.html", form=GoalForm(), match_id=match_id, team_id=team_id[0])
+
+
+@app.route("/goals/<match_id>/<team_id>/", methods=["POST"])
+@login_required(role="ADMIN")
+def goals_add_goal(match_id, team_id):
+
+    form = GoalForm(request.form)
+
+    if not form.validate():
+        return render_template("matches/list.html", form=form)
+    
+    time = form.time.data
+
+    sel_scorer_name = str(dict(form.scorer_name.choices).get(form.scorer_name.data))
+    scorer_id = Player.find_player_id(sel_scorer_name)
+
+    sel_assistant_1_name = str(dict(form.assistant_1_name.choices).get(form.assistant_1_name.data))
+    assistant_1_id = Player.find_player_id(sel_assistant_1_name)
+
+    sel_assistant_2_name = str(dict(form.assistant_2_name.choices).get(form.assistant_2_name.data))
+    assistant_2_id = Player.find_player_id(sel_assistant_2_name)
+
+    g = Goal(match_id, team_id, time, scorer_id[0], assistant_1_id[0], assistant_2_id[0])
+
+    db.session().add(g)
+    db.session().commit()
+
+    return redirect(url_for("matches_index"))
+

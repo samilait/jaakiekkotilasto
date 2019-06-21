@@ -67,6 +67,9 @@ from application.teams import views
 from application.matches import models
 from application.matches import views
 
+from application.goals import models
+from application.goals import views
+
 from application.auth import models
 from application.auth import views
 
