@@ -6,6 +6,7 @@ from application.goals.models import Goal
 from application.goals.forms import GoalForm
 from application.players.models import Player
 from application.teams.models import Team
+from application.matches.models import Match
 
 
 # @app.route("/players", methods=["GET"])
@@ -43,6 +44,14 @@ def goals_add_goal(match_id, team_id):
     g = Goal(match_id, team_id, time, scorer_id[0], assistant_1_id[0], assistant_2_id[0])
 
     db.session().add(g)
+    db.session().commit()
+
+    m = Match.query.get(match_id)
+    if str(m.home_team_id) == str(team_id):
+        m.home_team_score = m.home_team_score + 1
+    else:
+        m.away_team_score = m.away_team_score + 1
+    
     db.session().commit()
 
     return redirect(url_for("matches_index"))

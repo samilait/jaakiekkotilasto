@@ -13,6 +13,8 @@ class MatchForm(FlaskForm):
     home_team = SelectField(u'Home team', choices=team_choices, coerce=int)
     away_team = SelectField(u'Away team', choices=team_choices, coerce=int)
 
+    # score = StringField("Score")
+
     # def validate_team_name(form, field):
     #     sel_team_name = str(dict(field.choices).get(field.data))
     #     a = Team.find_team_id(sel_team_name)
