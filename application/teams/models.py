@@ -37,7 +37,8 @@ class Team(Base):
     @staticmethod
     def all_team_data():
 
-        stmt = text("SELECT Team.id, Team.Name FROM Team")
+        # stmt = text("SELECT Team.id, Team.Name FROM Team")
+        stmt = text("SELECT id, name FROM Team")
                     
         res = db.engine.execute(stmt)
         
