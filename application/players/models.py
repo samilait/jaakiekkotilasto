@@ -12,9 +12,9 @@ class Player(Base):
     position = db.Column(db.String(4), nullable=False)
     team_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)
 
-    # goal_scorer = db.relationship('Goal', backref = 'goal_scorer', lazy = 'dynamic', foreign_keys = 'Goal.scorer_id')
-    # goal_assistant_1 = db.relationship('Goal', backref = 'goal_assistant_1', lazy = 'dynamic', foreign_keys = 'Goal.assistant_1_id')
-    # goal_assistant_2 = db.relationship('Goal', backref = 'goal_assistant_2', lazy = 'dynamic', foreign_keys = 'Goal.assistant_2_id')
+    goal_scorer = db.relationship('Goal', backref = 'goal_scorer', lazy = 'dynamic', foreign_keys = 'Goal.scorer_id')
+    goal_assistant_1 = db.relationship('Goal', backref = 'goal_assistant_1', lazy = 'dynamic', foreign_keys = 'Goal.assistant_1_id')
+    goal_assistant_2 = db.relationship('Goal', backref = 'goal_assistant_2', lazy = 'dynamic', foreign_keys = 'Goal.assistant_2_id')
 
     def __init__(self, name, number, position, team_id):
         self.name = name
