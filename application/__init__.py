@@ -64,11 +64,11 @@ from application.players import views
 from application.teams import models
 from application.teams import views
 
-from application.matches import models
-from application.matches import views
+# from application.matches import models
+# from application.matches import views
 
-from application.goals import models
-from application.goals import views
+# from application.goals import models
+# from application.goals import views
 
 # login
 from application.auth.models import User
@@ -99,8 +99,8 @@ def load_user(user_id):
 #     return User.query.get(user_id)
 
 # database creation
-db.create_all()
-# try:
-#     db.create_all()
-# except:
-#     pass
+# db.create_all()
+try:
+    db.create_all()
+except:
+    pass

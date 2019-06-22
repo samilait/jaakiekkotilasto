@@ -11,10 +11,10 @@ class Team(Base):
 
     player = db.relationship("Player", backref='team', lazy=True)
     
-    home_team = db.relationship('Match', backref = 'home_team', lazy = 'dynamic', foreign_keys = 'Match.home_team_id')
-    away_team = db.relationship('Match', backref = 'away_team', lazy = 'dynamic', foreign_keys = 'Match.away_team_id')
+    # home_team = db.relationship('Match', backref = 'home_team', lazy = 'dynamic', foreign_keys = 'Match.home_team_id')
+    # away_team = db.relationship('Match', backref = 'away_team', lazy = 'dynamic', foreign_keys = 'Match.away_team_id')
 
-    goal_team = db.relationship('Goal', backref = 'goal_team', lazy = 'dynamic', foreign_keys = 'Goal.team_id')
+    # goal_team = db.relationship('Goal', backref = 'goal_team', lazy = 'dynamic', foreign_keys = 'Goal.team_id')
 
     def __init__(self, name):
         self.name = name
@@ -22,7 +22,6 @@ class Team(Base):
     @staticmethod
     def find_team_id(team_name=""):
 
-        print(team_name)
         stmt = text("SELECT Team.id FROM Team"
                     " WHERE Team.name = :team_name").params(team_name=team_name)
         res = db.engine.execute(stmt)
