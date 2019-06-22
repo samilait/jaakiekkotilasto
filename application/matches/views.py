@@ -1,4 +1,4 @@
-from application import app, db, login_required
+from application import app, db  #, login_required
 from flask import redirect, render_template, request, url_for
 from flask_login import current_user
 
@@ -14,7 +14,7 @@ def matches_index():
 
 
 @app.route("/matches/new/")
-@login_required(role="ADMIN")
+# @login_required(role="ADMIN")
 def matches_form():
     return render_template("matches/new.html", form = MatchForm())
 
@@ -36,7 +36,7 @@ def matches_form():
 
 
 @app.route("/matches/", methods=["POST"])
-@login_required(role="ADMIN")
+# @login_required(role="ADMIN")
 def matches_create():
     form = MatchForm(request.form)
 
@@ -50,7 +50,7 @@ def matches_create():
     away_team_id = Team.find_team_id(away_team_name)
 
     m = Match(form.match_date.data, home_team_id[0], away_team_id[0])    
-
+ 
     db.session().add(m)
     db.session().commit()
 

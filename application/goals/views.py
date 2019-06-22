@@ -1,4 +1,4 @@
-from application import app, db, login_required
+from application import app, db  #, login_required
 from flask import redirect, render_template, request, url_for
 from flask_login import current_user
 
@@ -22,7 +22,7 @@ def goals_form(match_id, team_name):
 
 
 @app.route("/goals/<match_id>/<team_id>/", methods=["POST"])
-@login_required(role="ADMIN")
+# @login_required(role="ADMIN")
 def goals_add_goal(match_id, team_id):
 
     form = GoalForm(request.form)
