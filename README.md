@@ -5,6 +5,7 @@ Tietokantasovellus j‰‰kiekko-ottelun ottelutapahtumien kirjaamista ja selaamista
 ## Sovellus
 
 - [Icehockey-Stats](https://icehockeystats.herokuapp.com)
+- PostGreSQL rikki t‰ll‰ hetkell‰. Korjataan parhaillaan (valmis 23.6.2019 menness‰)
 
 Login:
 
