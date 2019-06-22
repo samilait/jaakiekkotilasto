@@ -14,7 +14,7 @@ class Match(Base):
     home_team_score = db.Column(db.Integer)
     away_team_score = db.Column(db.Integer)
 
-    match_goal = db.relationship('Goal', backref = 'match_goal', lazy = 'dynamic', foreign_keys = 'Goal.match_id')
+    # match_goal = db.relationship('Goal', backref = 'match_goal', lazy = 'dynamic', foreign_keys = 'Goal.match_id')
 
     def __init__(self, match_date, home_team_id, away_team_id):
         self.match_date = match_date
