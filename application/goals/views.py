@@ -1,4 +1,4 @@
-from application import app, db  #, login_required
+from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
 from flask_login import current_user
 
@@ -15,14 +15,14 @@ from application.matches.models import Match
 
 
 @app.route("/goals/new/<match_id>/<team_name>", methods=["POST"])
-# @login_required(role="ADMIN")
+@login_required(role="ADMIN")
 def goals_form(match_id, team_name):
     team_id = Team.find_team_id(team_name)
     return render_template("goals/new.html", form=GoalForm(), match_id=match_id, team_id=team_id[0])
 
 
 @app.route("/goals/<match_id>/<team_id>/", methods=["POST"])
-# @login_required(role="ADMIN")
+@login_required(role="ADMIN")
 def goals_add_goal(match_id, team_id):
 
     form = GoalForm(request.form)

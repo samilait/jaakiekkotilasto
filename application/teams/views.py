@@ -12,7 +12,7 @@ def teams_index():
 
 
 @app.route("/teams/new/")
-# @login_required
+@login_required
 def teams_form():
     return render_template("teams/new.html", form=TeamForm())
 
@@ -29,7 +29,7 @@ def teams_form():
 
 
 @app.route("/teams/", methods=["POST"])
-# @login_required
+@login_required
 def teams_create():
     form = TeamForm(request.form)
 
