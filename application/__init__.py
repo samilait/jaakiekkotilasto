@@ -85,7 +85,7 @@ login_manager.login_message = "Please login to use this functionality."
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
-    
+
 # from application.auth import models
 # from application.auth import views
 
@@ -99,7 +99,8 @@ def load_user(user_id):
 #     return User.query.get(user_id)
 
 # database creation
-try:
-    db.create_all()
-except:
-    pass
+db.create_all()
+# try:
+#     db.create_all()
+# except:
+#     pass
