@@ -17,14 +17,21 @@ class GoalForm(FlaskForm):
 
     time = StringField("Time (mm:ss)")
 
-    scorer_choices = Player.team_players(2)
-    scorer_name = SelectField(u'Scorer', choices=scorer_choices, coerce=int)
+    # scorer_choices = Player.team_players(team_id)
+    scorer_name = SelectField(u'Scorer', coerce=int)
 
-    assistant_1_choices = Player.team_players(2)
-    assistant_1_name = SelectField(u'Assistant 1', choices=assistant_1_choices, coerce=int)
+    # assistant_1_choices = Player.team_players(team_id)
+    assistant_1_name = SelectField(u'Assistant 1', coerce=int)  # , choices=assistant_1_choices, coerce=int)
 
-    assistant_2_choices = Player.team_players(2)
-    assistant_2_name = SelectField(u'Assistant 2', choices=assistant_2_choices, coerce=int)
+    # assistant_2_choices = Player.team_players(team_id)
+    assistant_2_name = SelectField(u'Assistant 2', coerce=int)  # choices=assistant_2_choices, coerce=int)
+
+    def __init__(self, team_id, *args, **kwargs):
+        FlaskForm.__init__(self, *args, **kwargs)
+        self.team_id = team_id
+        self.scorer_name.choices = Player.team_players(team_id)
+        self.assistant_1_name.choices = Player.team_players(team_id)
+        self.assistant_2_name.choices = Player.team_players(team_id)
  
     class Meta:
         csrf = False

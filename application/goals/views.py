@@ -18,14 +18,14 @@ from application.matches.models import Match
 @login_required(role="ADMIN")
 def goals_form(match_id, team_name):
     team_id = Team.find_team_id(team_name)
-    return render_template("goals/new.html", form=GoalForm(), match_id=match_id, team_id=team_id[0])
+    return render_template("goals/new.html", form=GoalForm(team_id[0]), match_id=match_id, team_id=team_id[0])
 
 
 @app.route("/goals/<match_id>/<team_id>/", methods=["POST"])
 @login_required(role="ADMIN")
 def goals_add_goal(match_id, team_id):
 
-    form = GoalForm(request.form)
+    form = GoalForm(request.form, team_id)
 
     if not form.validate():
         return render_template("matches/list.html", form=form)
