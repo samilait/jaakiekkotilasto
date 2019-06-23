@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Code</th>
+      <th>Description</th>
+    </tr>
+    {% for penaltycode in penaltycodes %}
+    <tr>
+      <td>{{ penaltycode.code }}</td>
+      <td>{{ penaltycode.description }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

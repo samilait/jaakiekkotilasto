@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('penaltycodes_create') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.code.label }}
+      </td>
+      <td>
+        {{ form.code }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.code.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          {{ form.description.label }}
+        </td>
+        <td>
+          {{ form.description }}
+        </td>
+        <td>
+          <ul>
+            {% for error in form.description.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+  
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Add new Penalty code"/>
+      </td>
+    </tr>
+  </table>
+
+</form>
+{% endblock %}

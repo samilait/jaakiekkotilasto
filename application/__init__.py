@@ -72,6 +72,9 @@ from application.matches import views
 from application.goals import models
 from application.goals import views
 
+from application.penaltycodes import models
+from application.penaltycodes import views
+
 # login
 # from application.auth.models import User
 # from os import urandom
