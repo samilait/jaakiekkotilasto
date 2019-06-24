@@ -9,11 +9,6 @@ from application.teams.models import Team
 from application.matches.models import Match
 
 
-# @app.route("/players", methods=["GET"])
-# def players_index():
-#     return render_template("players/list.html", players=Player.all_players())  # .query.all())
-
-
 @app.route("/goals/new/<match_id>/<team_name>", methods=["POST"])
 @login_required(role="ADMIN")
 def goals_form(match_id, team_name):
@@ -25,10 +20,10 @@ def goals_form(match_id, team_name):
 @login_required(role="ADMIN")
 def goals_add_goal(match_id, team_id):
 
-    form = GoalForm(request.form, team_id)
+    form = GoalForm(team_id, request.form)  # , team_id)  # , team_id)
 
     if not form.validate():
-        return render_template("matches/list.html", form=form)
+        return render_template("goals/new.html", form=form)
     
     time = form.time.data
 

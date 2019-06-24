@@ -16,6 +16,8 @@ class Match(Base):
 
     match_goal = db.relationship('Goal', backref = 'match_goal', lazy = 'dynamic', foreign_keys = 'Goal.match_id')
 
+    match_penalty = db.relationship('Penalty', backref = 'match_penalty', lazy = 'dynamic', foreign_keys = 'Penalty.match_id')
+
     def __init__(self, match_date, home_team_id, away_team_id):
         self.match_date = match_date
         self.home_team_id = home_team_id

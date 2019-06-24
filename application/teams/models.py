@@ -15,6 +15,7 @@ class Team(Base):
     away_team = db.relationship('Match', backref = 'away_team', lazy = 'dynamic', foreign_keys = 'Match.away_team_id')
 
     goal_team = db.relationship('Goal', backref = 'goal_team', lazy = 'dynamic', foreign_keys = 'Goal.team_id')
+    penalty_team = db.relationship('Penalty', backref = 'penalty_team', lazy = 'dynamic', foreign_keys = 'Penalty.team_id')
 
     def __init__(self, name):
         self.name = name

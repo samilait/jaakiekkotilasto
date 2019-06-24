@@ -16,6 +16,8 @@ class Player(Base):
     goal_assistant_1 = db.relationship('Goal', backref = 'goal_assistant_1', lazy = 'dynamic', foreign_keys = 'Goal.assistant_1_id')
     goal_assistant_2 = db.relationship('Goal', backref = 'goal_assistant_2', lazy = 'dynamic', foreign_keys = 'Goal.assistant_2_id')
 
+    penalty_receiver = db.relationship('Penalty', backref = 'penalty_receiver', lazy = 'dynamic', foreign_keys = 'Penalty.receiver_id')
+
     def __init__(self, name, number, position, team_id):
         self.name = name
         self.number = number
@@ -51,10 +53,10 @@ class Player(Base):
 
 
     @staticmethod
-    def team_players(team_id):
+    def team_players(p_team_id):
 
-        stmt = text("SELECT Player.number, Player.name FROM Player"
-                    " WHERE Player.team_id = :team_id").params(team_id=team_id)
+        stmt = text("SELECT number, name FROM Player"
+                    " WHERE team_id = :p_team_id").params(p_team_id=p_team_id)
         res = db.engine.execute(stmt)
         
         response = []

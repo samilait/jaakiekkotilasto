@@ -29,6 +29,17 @@
         </form>
       </td>
 
+      <td>
+        <form method="POST" action="{{ url_for('penalties_form', match_id=match.id, team_name=match.home_team_name) }}">
+            <input type="submit" value="Add penalty: Home Team"/>
+        </form>
+      </td>
+      <td> 
+        <form method="POST" action="{{ url_for('penalties_form', match_id=match.id, team_name=match.away_team_name) }}">
+            <input type="submit" value="Add penalty: Away Team"/>
+        </form>
+      </td>
+
     </tr>
     {% endfor %}
   </table>
