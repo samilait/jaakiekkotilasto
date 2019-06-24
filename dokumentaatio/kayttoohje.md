@@ -34,16 +34,26 @@ Valikon "List matches" nappulaa painamalla saadaa näkyviin lista kaikista kannas
 - Vierasjoukkue
 - Maalit, kotijoukkue
 - Maalit, vierasjoukkue
+- Rangaistus, kotijoukkue
+- Rangaistus, vierasjoukkue
 
-Listatun pelin yhteydessä on nappulat, joista voidaan lisätä maali joko koti- tai vierasjoukkueelle.
+Listatun pelin yhteydessä on nappulat, joista voidaan lisätä maali / rangaistus joko koti- tai vierasjoukkueelle.
 
 ## 5. Maalin lisääminen
-Maalin lisäämisessa annetaan:
+Maalin lisäämisessä annetaan:
 - Maalin tekoaika (mm:ss)
 - Maalintekijä (valmis valikko perustuen pelaajiin siinä joukkueessa, jolle maali merkitään)
 - Syöttäjä 1 (valmis valikko perustuen pelaajiin siinä joukkueessa, jolle maali merkitään)
 - Syöttäjä 2 (valmis valikko perustuen pelaajiin siinä joukkueessa, jolle maali merkitään)
 
 Kun maali on lisätty niin listatun ottelun maalitilanne päivittyy.
+
+## 6. Rangaistuksen lisääminen
+Rangaistuksen lisäämisessä annetaan:
+- Rangaistuksen alkuaika (mm:ss)
+- Rangaistuksen kesto (min)
+- Rangaistuksen saaja (valmis valikko perustuen pelaajiin siinä joukkueessa, jolle rangaistus merkitään)
+- Rangaistuksen syy (valmis valikko perustuen mahdollisiin rangaistustyyppeihin)
+
 
 
