@@ -26,14 +26,14 @@ class Player(Base):
 
     @staticmethod
     def all_players():
-        stmt = text("SELECT Team.Name, Player.Name, Player.Number, Player.Position FROM Player, Team"
+        stmt = text("SELECT Team.Name, Player.id, Player.Name, Player.Number, Player.Position FROM Player, Team"
                     " WHERE Player.team_id = Team.id ORDER BY Team.id, Player.Name, Player.Number, Player.Position")
         res = db.engine.execute(stmt)
         
         response = []
 
         for row in res:
-            response.append({"team_name": row[0], "name": row[1], "number": row[2], "position": row[3]})
+            response.append({"team_name": row[0], "id": row[1], "name": row[2], "number": row[3], "position": row[4]})
 
         return response
 
@@ -152,3 +152,14 @@ class Player(Base):
 
         return response
 
+    @staticmethod
+    def delete_player(id):
+
+        stmt = text("DELETE FROM goal WHERE scorer_id = :id OR assistant_1_id = :id OR assistant_2_id = :id").params(id=id)
+        db.engine.execute(stmt)
+
+        stmt = text("DELETE FROM penalty WHERE receiver_id = :id").params(id=id)
+        db.engine.execute(stmt)
+
+        stmt = text("DELETE FROM player WHERE id = :id").params(id=id)
+        db.engine.execute(stmt)        

@@ -20,6 +20,12 @@
             <input type="submit" value="Change position!"/>
         </form>
       </td>
+      <td>
+        <form method="POST" action="{{ url_for('players_delete', player_id=player.id) }}">
+            <input type="submit" value="Delete player"/>
+        </form>
+      </td>
+
     </tr>
     {% endfor %}
   </table>

@@ -60,3 +60,11 @@ def players_statistics():
             totalpoints=Player.player_total_points(), 
             totalassists=Player.player_assists(),
             totalminutes=Player.player_penalties())
+
+@app.route("/players/delete/<player_id>/", methods=["POST"])
+@login_required(role="ADMIN")
+def players_delete(player_id):
+    print("player ID:" + str(player_id))
+    Player.delete_player(player_id)
+
+    return redirect(url_for("players_index"))
