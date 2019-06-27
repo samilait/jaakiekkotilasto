@@ -52,3 +52,10 @@ def players_create():
     db.session().commit()
 
     return redirect(url_for("players_index"))
+
+@app.route("/players/statistics", methods=["GET"])
+def players_statistics():
+    return render_template("players/statistics.html", 
+            goals=Player.player_goals(), 
+            totalpoints=Player.player_total_points(), 
+            totalassists=Player.player_assists())

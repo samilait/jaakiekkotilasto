@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="p-2 mb-1 bg-secondary text-white"><h1>Goals</h1></div>
+<p></p>
+
+  <table>
+    <tr>
+      <th>Player</th>
+      <th>Team</th>
+      <th>Goals</th>
+    </tr>
+    {% for goal in goals %}
+    <tr>
+      <td>{{ goal.player_name }}</td>
+      <td>{{ goal.team_name }}</td>
+      <td>{{ goal.num_of_goals }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p></p>
+  <div class="p-2 mb-1 bg-secondary text-white"><h1>Assists</h1></div>
+  <p></p>
+  
+  <table>
+    <tr>
+      <th>Player</th>
+      <th>Team</th>
+      <th>Assists</th>
+    </tr>
+    {% for assist in totalassists %}
+    <tr>
+      <td>{{ assist.player_name }}</td>
+      <td>{{ assist.team_name }}</td>
+      <td>{{ assist.assists }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p></p>
+  <div class="p-2 mb-1 bg-secondary text-white"><h1>Total Points</h1></div>
+  <p></p>
+  
+  <table>
+    <tr>
+      <th>Player</th>
+      <th>Team</th>
+      <th>Points</th>
+    </tr>
+    {% for point in totalpoints %}
+    <tr>
+      <td>{{ point.player_name }}</td>
+      <td>{{ point.team_name }}</td>
+      <td>{{ point.points }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

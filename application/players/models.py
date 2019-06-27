@@ -79,6 +79,76 @@ class Player(Base):
             response.append(row[0])
 
         return response
+    
+    @staticmethod
+    def player_total_points():
 
+        stmt = text("SELECT player.name, team.name, COUNT(*) AS points "
+                    " FROM player, team, goal "
+                    " WHERE player.team_id = team.id "
+                    " AND (player.id = goal.scorer_id OR player.id = goal.assistant_1_id OR player.id = goal.assistant_2_id) "
+                    " GROUP BY player.name ORDER BY points DESC")
 
+        res = db.engine.execute(stmt)
+        
+        response = []
+
+        for row in res:
+            response.append({"player_name": row[0], "team_name": row[1], "points": row[2]})
+
+        return response
+
+    @staticmethod
+    def player_goals():
+
+        stmt = text("SELECT player.name, team.name, COUNT(*) AS goals "
+                    " FROM player, team, goal "
+                    " WHERE player.team_id = team.id "
+                    " AND player.id = goal.scorer_id "
+                    " GROUP BY player.name ORDER BY goals DESC")
+
+        res = db.engine.execute(stmt)
+        
+        response = []
+
+        for row in res:
+            response.append({"player_name": row[0], "team_name": row[1], "num_of_goals": row[2]})
+
+        return response
+
+    @staticmethod
+    def player_assists():
+
+        stmt = text("SELECT player.name, team.name, COUNT(*) AS assists "
+                    " FROM player, team, goal "
+                    " WHERE player.team_id = team.id "
+                    " AND (player.id = goal.assistant_1_id OR player.id = goal.assistant_2_id) "
+                    " GROUP BY player.name ORDER BY assists DESC")
+
+        res = db.engine.execute(stmt)
+        
+        response = []
+
+        for row in res:
+            response.append({"player_name": row[0], "team_name": row[1], "assists": row[2]})
+
+        return response
+
+    @staticmethod
+    def player_penalties():
+
+        stmt = text("SELECT player.name, team.name, COUNT(*) AS minutes "
+                    " FROM player, team, goal "
+                    " WHERE player.team_id = team.id "
+                    " AND player.id = goal.scorer_id "
+                    " GROUP BY player.name ORDER BY goals DESC")
+
+        res = db.engine.execute(stmt)
+        
+        response = []
+
+        for row in res:
+            response.append({"player_name": row[0], "team_name": row[1], "num_of_goals": row[2]})
+
+        return response
 
