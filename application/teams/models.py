@@ -49,4 +49,38 @@ class Team(Base):
             response.append((row[0], row[1]))
 
         return response
+    
+    @staticmethod
+    def team_goals():
+
+        stmt = text("SELECT team.name, COUNT(*) AS home "
+                    " FROM team, goal "
+                    " WHERE goal.team_id = team.id "
+                    " GROUP BY team.name ORDER BY home DESC")
+
+        res = db.engine.execute(stmt)
+        
+        response = []
+
+        for row in res:
+            response.append({"team_name": row[0], "goals_scored": row[1]})
+
+        return response
+
+    @staticmethod
+    def team_penalties():
+
+        stmt = text("SELECT team.name, SUM(CAST(penalty.length AS INT)) AS minutes "
+                    " FROM team, penalty "
+                    " WHERE penalty.team_id = team.id "
+                    " GROUP BY team.name ORDER BY minutes DESC")
+
+        res = db.engine.execute(stmt)
+        
+        response = []
+
+        for row in res:
+            response.append({"team_name": row[0], "minutes": row[1]})
+
+        return response
 

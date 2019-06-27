@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="p-2 mb-1 bg-secondary text-white"><h1>Goals</h1></div>
+<p></p>
+
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Goals scored</th>
+    </tr>
+    {% for goal in goals %}
+    <tr>
+      <td>{{ goal.team_name }}</td>
+      <td>{{ goal.goals_scored }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p></p>
+  <div class="p-2 mb-1 bg-secondary text-white"><h1>Total Penalty Minutes</h1></div>
+  <p></p>
+  
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Penalty Minutes</th>
+    </tr>
+    {% for penalty in penalties %}
+    <tr>
+      <td>{{ penalty.team_name }}</td>
+      <td>{{ penalty.minutes }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

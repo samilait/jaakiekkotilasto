@@ -42,3 +42,10 @@ def teams_create():
     db.session().commit()
 
     return redirect(url_for("teams_index"))
+
+@app.route("/teams/statistics", methods=["GET"])
+def teams_statistics():
+    return render_template("teams/statistics.html", 
+            goals=Team.team_goals(),
+            penalties=Team.team_penalties())
+
