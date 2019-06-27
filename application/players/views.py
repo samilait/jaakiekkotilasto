@@ -58,4 +58,5 @@ def players_statistics():
     return render_template("players/statistics.html", 
             goals=Player.player_goals(), 
             totalpoints=Player.player_total_points(), 
-            totalassists=Player.player_assists())
+            totalassists=Player.player_assists(),
+            totalminutes=Player.player_penalties())

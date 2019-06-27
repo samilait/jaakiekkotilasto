@@ -137,18 +137,18 @@ class Player(Base):
     @staticmethod
     def player_penalties():
 
-        stmt = text("SELECT player.name, team.name, COUNT(*) AS minutes "
-                    " FROM player, team, goal "
+        stmt = text("SELECT player.name, team.name, SUM(CAST(penalty.length AS INT)) AS minutes "
+                    " FROM player, team, penalty "
                     " WHERE player.team_id = team.id "
-                    " AND player.id = goal.scorer_id "
-                    " GROUP BY player.name ORDER BY goals DESC")
+                    " AND player.id = penalty.receiver_id "
+                    " GROUP BY player.name ORDER BY minutes DESC")
 
         res = db.engine.execute(stmt)
         
         response = []
 
         for row in res:
-            response.append({"player_name": row[0], "team_name": row[1], "num_of_goals": row[2]})
+            response.append({"player_name": row[0], "team_name": row[1], "minutes": row[2]})
 
         return response
 

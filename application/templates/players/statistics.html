@@ -58,4 +58,23 @@
     {% endfor %}
   </table>
 
+  <p></p>
+  <div class="p-2 mb-1 bg-secondary text-white"><h1>Total Penalty Minutes</h1></div>
+  <p></p>
+  
+  <table>
+    <tr>
+      <th>Player</th>
+      <th>Team</th>
+      <th>Penalty Minutes</th>
+    </tr>
+    {% for minute in totalminutes %}
+    <tr>
+      <td>{{ minute.player_name }}</td>
+      <td>{{ minute.team_name }}</td>
+      <td>{{ minute.minutes }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
 {% endblock %}
