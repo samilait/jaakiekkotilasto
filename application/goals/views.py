@@ -20,7 +20,7 @@ def goals_form(match_id, team_name):
 @login_required(role="ADMIN")
 def goals_add_goal(match_id, team_id):
 
-    form = GoalForm(team_id, request.form)  # , team_id)  # , team_id)
+    form = GoalForm(team_id, request.form)
 
     if not form.validate():
         return render_template("goals/new.html", form=form)

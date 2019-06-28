@@ -9,7 +9,7 @@ from application.teams.models import Team
 
 @app.route("/players", methods=["GET"])
 def players_index():
-    return render_template("players/list.html", players=Player.all_players())  # .query.all())
+    return render_template("players/list.html", players=Player.all_players())
 
 
 @app.route("/players/new/")
@@ -25,10 +25,6 @@ def players_change_position(player_id):
     p = Player.query.get(player_id)
     p.position = request.form.get("position")
 
-    # if t.account_id != current_user.id:
-    #     # tee jotain, esim. 
-    #     return login_manager.unauthorized()
-    
     db.session().commit()
   
     return redirect(url_for("players_index"))

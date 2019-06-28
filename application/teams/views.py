@@ -16,18 +16,6 @@ def teams_index():
 def teams_form():
     return render_template("teams/new.html", form=TeamForm())
 
-
-# @app.route("/teams/<team_id>/", methods=["POST"])
-# @login_required
-# def players_change_position(player_id):
-
-#     p = Player.query.get(player_id)
-#     p.position = request.form.get("position")
-#     db.session().commit()
-  
-#     return redirect(url_for("players_index"))
-
-
 @app.route("/teams/", methods=["POST"])
 @login_required
 def teams_create():

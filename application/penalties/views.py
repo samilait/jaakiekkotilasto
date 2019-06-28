@@ -24,7 +24,7 @@ def penalties_add_penalty(match_id, team_id):
     form = PenaltyForm(team_id, request.form)
 
     if not form.validate():
-        return render_template("matches/list.html", form=form)
+        return render_template("penalties/new.html", form=form)
     
     start_time = form.start_time.data
     length = form.length.data
