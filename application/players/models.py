@@ -87,7 +87,7 @@ class Player(Base):
                     " FROM player, team, goal "
                     " WHERE player.team_id = team.id "
                     " AND (player.id = goal.scorer_id OR player.id = goal.assistant_1_id OR player.id = goal.assistant_2_id) "
-                    " GROUP BY player.name ORDER BY points DESC")
+                    " GROUP BY player.name, team.name ORDER BY points DESC")
 
         res = db.engine.execute(stmt)
         
