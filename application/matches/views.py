@@ -54,6 +54,9 @@ def matches_create():
     db.session().add(m)
     db.session().commit()
 
+    m.match_accounts.append(current_user)
+    db.session().commit()
+
     return redirect(url_for("matches_index"))
 
 
