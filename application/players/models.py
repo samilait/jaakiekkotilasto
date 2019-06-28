@@ -105,7 +105,7 @@ class Player(Base):
                     " FROM player, team, goal "
                     " WHERE player.team_id = team.id "
                     " AND player.id = goal.scorer_id "
-                    " GROUP BY player.name ORDER BY goals DESC")
+                    " GROUP BY player.name, team.name ORDER BY goals DESC")
 
         res = db.engine.execute(stmt)
         
@@ -123,7 +123,7 @@ class Player(Base):
                     " FROM player, team, goal "
                     " WHERE player.team_id = team.id "
                     " AND (player.id = goal.assistant_1_id OR player.id = goal.assistant_2_id) "
-                    " GROUP BY player.name ORDER BY assists DESC")
+                    " GROUP BY player.name, team.name ORDER BY assists DESC")
 
         res = db.engine.execute(stmt)
         
@@ -141,7 +141,7 @@ class Player(Base):
                     " FROM player, team, penalty "
                     " WHERE player.team_id = team.id "
                     " AND player.id = penalty.receiver_id "
-                    " GROUP BY player.name ORDER BY minutes DESC")
+                    " GROUP BY player.name, team.name ORDER BY minutes DESC")
 
         res = db.engine.execute(stmt)
         
@@ -158,8 +158,8 @@ class Player(Base):
         stmt = text("DELETE FROM goal WHERE scorer_id = :id OR assistant_1_id = :id OR assistant_2_id = :id").params(id=id)
         db.engine.execute(stmt)
 
-        stmt = text("DELETE FROM penalty WHERE receiver_id = :id").params(id=id)
-        db.engine.execute(stmt)
+        # stmt = text("DELETE FROM penalty WHERE receiver_id = :id").params(id=id)
+        # db.engine.execute(stmt)
 
-        stmt = text("DELETE FROM player WHERE id = :id").params(id=id)
-        db.engine.execute(stmt)        
+        # stmt = text("DELETE FROM player WHERE id = :id").params(id=id)
+        # db.engine.execute(stmt)        
