@@ -55,5 +55,17 @@ Rangaistuksen lisäämisessä annetaan:
 - Rangaistuksen saaja (valmis valikko perustuen pelaajiin siinä joukkueessa, jolle rangaistus merkitään)
 - Rangaistuksen syy (valmis valikko perustuen mahdollisiin rangaistustyyppeihin)
 
+## 7. Pelaajatilastot
+Pelaajatilastoja voi tarkastella yläpalkin nappulasta "Player statistics". Listassa on suuruusjärjestyksessä:
+- Tehdyt maalit
+- Syöttöpisteet
+- Kokonaispisteet (maalit + syötöt)
+- Rangaistusminuutit
+
+## 8. Joukkuetilastot
+Joukkuetilastoja voi tarkastella yläpalkin nappulasta "Team statistics". Listassa on suuruusjärjestyksessä:
+- Maalit
+- Rangaistusminuutit
+
 
 

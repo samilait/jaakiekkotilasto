@@ -11,3 +11,5 @@
 - Käyttäjä voi listata ottelut
 - Käyttäjä voi lisätä maalin joko koti- tai vierasjoukkueelle
 - Käyttäjä voi lisätä rangaistuksen joko koti- tai vierasjoukkueelle
+- Käyttäjä voi tarkastella pelaajatilistoja: maalit, syötöt, kokonaispisteet, rangaistusminuutit
+- Käyttäjä voi tarkastella joukkuetilastoja: maalit, rangaistusminuutit
